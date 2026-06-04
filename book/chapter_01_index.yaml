@@ -1,0 +1,168 @@
+---
+chapter: 1
+title: "The State of Threat Intelligence"
+subtitle: "Why Manual Curation Doesn't Scale"
+part: 1
+part_title: "Foundations"
+estimated_time: "45 minutes"
+difficulty: "beginner"
+date: "2025-01-19"
+version: "1.0.0"
+
+objectives:
+  - "Understand the threat intelligence landscape and its evolution"
+  - "Recognize the fundamental limitations of manual threat tracking"
+  - "Identify automation opportunities in threat intelligence workflows"
+  - "Envision the architecture of self-updating intelligence systems"
+
+prerequisites:
+  - "Basic understanding of cybersecurity concepts"
+  - "Awareness of recent security breaches (helpful but not required)"
+  - "No programming knowledge required for this chapter"
+
+outcomes:
+  knowledge:
+    - "Strategic vs. Tactical vs. Operational threat intelligence"
+    - "Current state of threat intelligence industry"
+    - "Common pain points in manual threat tracking"
+  skills:
+    - "Evaluate threat intelligence sources critically"
+    - "Audit personal threat intel consumption patterns"
+    - "Identify automation opportunities in workflows"
+  mindset:
+    - "Automation is necessity, not luxury"
+    - "Intelligence without action is just data"
+    - "Self-updating systems are achievable with current technology"
+
+sections:
+  - number: 1.1
+    title: "The Intelligence Problem"
+    topics:
+      - "What threat intelligence actually means"
+      - "The three types: Strategic, Tactical, Operational"
+      - "Why threat intel matters more than ever"
+      - "The gap between collection and action"
+    estimated_time: "10 minutes"
+  
+  - number: 1.2
+    title: "Case Study: Salt Typhoon's 300-Day Persistence"
+    topics:
+      - "How Chinese APT compromised US telecom for 10 months"
+      - "Intelligence that existed but wasn't actionable"
+      - "The cost of delayed threat detection"
+      - "What automated systems would have caught"
+    estimated_time: "8 minutes"
+  
+  - number: 1.3
+    title: "The Manual Curation Crisis"
+    topics:
+      - "20,000+ CVEs published annually"
+      - "100+ security blogs to monitor"
+      - "Human cognitive limits and alert fatigue"
+      - "The 85% actionability gap"
+    estimated_time: "10 minutes"
+  
+  - number: 1.4
+    title: "Why Existing Solutions Fail"
+    topics:
+      - "Commercial platforms: $50K-$500K/year pricing"
+      - "Feature bloat vs. actual needs"
+      - "Vendor lock-in and data silos"
+      - "The SMB intelligence desert"
+    estimated_time: "7 minutes"
+  
+  - number: 1.5
+    title: "The Self-Updating Intelligence Vision"
+    topics:
+      - "What 'living threat intelligence' means"
+      - "ThreatPulse architecture overview"
+      - "Zero-cost automation possibilities"
+      - "From vision to reality: the roadmap"
+    estimated_time: "10 minutes"
+
+practical_exercise:
+  name: "Personal Threat Intel Consumption Audit"
+  description: "Track how you currently consume threat intelligence for one week"
+  deliverable: "Completed audit template showing time spent, sources used, and actionability rate"
+  estimated_time: "30 minutes setup + 1 week tracking"
+  files:
+    - "exercises/chapter-01/audit-template.md"
+    - "exercises/chapter-01/sample-audit.md"
+
+key_takeaways:
+  - "Manual threat intelligence doesn't scale beyond 5-10 sources"
+  - "Average security professional spends 10+ hours/week on threat news with 85% waste"
+  - "Commercial platforms are priced for enterprises, leaving SMBs underserved"
+  - "Self-updating intelligence systems are achievable with modern free tools"
+  - "The goal isn't more intelligence—it's more actionable intelligence"
+
+further_reading:
+  - title: "NIST Guide to Cyber Threat Information Sharing"
+    url: "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-150.pdf"
+    type: "specification"
+  
+  - title: "Mandiant APT1 Report (2013)"
+    url: "https://www.mandiant.com/resources/reports/apt1-exposing-one-of-chinas-cyber-espionage-units"
+    type: "report"
+    note: "Historic example of actionable threat intelligence"
+  
+  - title: "The Pyramid of Pain (David Bianco)"
+    url: "http://detect-respond.blogspot.com/2013/03/the-pyramid-of-pain.html"
+    type: "blog"
+    note: "Essential framework for understanding IOC value"
+
+vocabulary:
+  - term: "Threat Intelligence"
+    definition: "Evidence-based knowledge about existing or emerging threats that can inform decisions"
+    aliases: ["CTI", "Cyber Threat Intelligence"]
+  
+  - term: "IOC"
+    definition: "Indicator of Compromise - forensic artifacts suggesting intrusion"
+    examples: ["IP addresses", "file hashes", "domain names"]
+  
+  - term: "TTP"
+    definition: "Tactics, Techniques, and Procedures - behavioral patterns of threat actors"
+    framework: "MITRE ATT&CK"
+  
+  - term: "Dwell Time"
+    definition: "Time between initial compromise and detection"
+    context: "Salt Typhoon: 300 days, Industry average: 21 days (2024)"
+
+connections:
+  prerequisites:
+    - "None - this is the foundation chapter"
+  
+  builds_to:
+    - chapter: 2
+      relationship: "Introduces taxonomy and frameworks referenced here"
+    - chapter: 3
+      relationship: "Identifies specific OSINT sources for automation"
+    - chapter: 12
+      relationship: "Realizes the ThreatPulse vision described in section 1.5"
+  
+  references:
+    - chapter: 10
+      section: "10.2"
+      topic: "GitHub Actions automation (mentioned in 1.5)"
+    - chapter: 8
+      section: "8.3"
+      topic: "AI summarization (mentioned in 1.5)"
+
+resources:
+  code_examples: []
+  datasets: []
+  tools: []
+  templates:
+    - "exercises/chapter-01/audit-template.md"
+    - "exercises/chapter-01/sample-audit.md"
+
+metadata:
+  status: "ready_to_write"
+  author: "Raghav Dinesh"
+  reviewed: false
+  word_count_target: "3500-4000"
+  real_world_examples:
+    - "Salt Typhoon telecom breach (2024-2025)"
+    - "CISA KEV catalog statistics"
+    - "Commercial threat intel platform pricing"
+    - "Industry dwell time metrics"
