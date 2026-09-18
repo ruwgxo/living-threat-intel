@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 import sys
+from urllib.parse import urlsplit, urlunsplit
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
@@ -24,13 +25,22 @@ SEVERITY_ORDER = {"CRITICAL": 4, "HIGH": 3, "MEDIUM": 2, "LOW": 1, "NONE": 0, "U
 def _ioc_key(ioc: dict) -> str:
     """
     Canonical dedup key for an IOC: type + normalized value.
-    Lowercased domains/URLs, uppercase hashes, stripped whitespace.
+    Lowercase domains, URL hosts and hex hashes; preserve URL paths and queries.
     """
     ioc_type = ioc.get("type", "").lower()
     value = ioc.get("value", "").strip()
 
-    if ioc_type in ("domain", "url"):
+    if ioc_type == "domain":
         value = value.lower()
+    elif ioc_type == "url":
+        try:
+            parts = urlsplit(value)
+            # User information, paths, queries and fragments can be case-sensitive.
+            userinfo, separator, host = parts.netloc.rpartition("@")
+            netloc = userinfo + separator + host.lower()
+            value = urlunsplit(parts._replace(scheme=parts.scheme.lower(), netloc=netloc))
+        except ValueError:
+            pass  # Preserve malformed input rather than merging distinct indicators.
     elif ioc_type in ("hash_md5", "hash_sha1", "hash_sha256"):
         value = value.lower()  # normalize hex to lowercase
 
@@ -65,7 +75,9 @@ def _merge_iocs(iocs: list[dict]) -> list[dict]:
         best = max(group, key=lambda x: CONFIDENCE_ORDER.get(x.get("confidence", "unknown"), 0))
 
         # Union all sources and tags
-        sources = list({x.get("source", "") for x in group if x.get("source")})
+        sources = sorted({source for x in group
+                          for source in [*x.get("sources", []), x.get("source", "")]
+                          if source})
         all_tags = []
         for x in group:
             all_tags.extend(x.get("tags", []))
@@ -113,7 +125,9 @@ def _merge_cves(cves: list[dict]) -> list[dict]:
         )
 
         # Union sources
-        sources = list({x.get("source", "") for x in group if x.get("source")})
+        sources = sorted({source for x in group
+                          for source in [*x.get("sources", []), x.get("source", "")]
+                          if source})
 
         # Use CVSS from the entry that has it (prefer NVD)
         cvss = next(
@@ -135,7 +149,7 @@ def _merge_cves(cves: list[dict]) -> list[dict]:
 
         merged_cve = dict(best)
         merged_cve["sources"] = sources
-        merged_cve["source"] = sources[0]
+        merged_cve["source"] = sources[0] if sources else best.get("source", "")
         merged_cve["cvss"] = cvss
         merged_cve["tags"] = tags
         merged_cve["affected_products"] = affected_products
@@ -226,7 +240,6 @@ def deduplicate_across_days(days: list[str], data_dir: str = "data/daily") -> di
 
 
 if __name__ == "__main__":
-    import sys
     date_arg = sys.argv[1] if len(sys.argv) > 1 else datetime.now(timezone.utc).strftime("%Y-%m-%d")
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     deduplicate_daily(date_arg)
