@@ -190,4 +190,4 @@ Then add it to `run_all.py`'s `build_collectors()`.
 ## Author
 
 Raghav Dinesh · [github.com/ruwgxo](https://github.com/ruwgxo)  
-Detection & Security Platform Engineer · working in security since 2012
+Security architect · working in security since 2012
