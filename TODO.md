@@ -20,7 +20,7 @@
 
 ## Repo hygiene
 - [ ] Add GitHub topics: threat-intelligence detection-engineering security-automation github-actions yara sigma cve ioc python mitre-attack
-- [ ] Set repo description: "Self-updating threat intel platform. CVEs + IOCs from 4 sources daily, YARA/Sigma rules, AI weekly summaries. Zero cost on GitHub Actions."
+- [ ] Set repo description: "Self-updating threat intel platform. CVEs + IOCs from 4 sources daily, YARA/Sigma rules, AI weekly summaries. Under $3/month on GitHub Actions."
 - [ ] Tag v1.0.0 release with release notes on GitHub
 
 ## Book (chapters tied to this repo)
