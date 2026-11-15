@@ -173,7 +173,7 @@ Release body — paste this:
 
 ---
 
-**living-threat-intel v1.0.0** — self-updating threat intelligence platform at zero cost.
+**living-threat-intel v1.0.0** — self-updating threat intelligence platform on GitHub Actions for under $3/month.
 
 Runs entirely on GitHub Actions free tier. No servers. No database. No paid APIs (Claude optional, ~$0.05/week).
 
@@ -232,7 +232,7 @@ These drive organic discovery. `threat-intelligence` + `detection-engineering` a
 ## 1.7 Repo description (About section)
 
 ```
-Self-updating threat intelligence platform. Collects CVEs + IOCs from 4 sources daily, generates YARA/Sigma rules, AI weekly summaries. Zero cost on GitHub Actions free tier.
+Self-updating threat intelligence platform. Collects CVEs + IOCs from 4 sources daily, generates YARA/Sigma rules, AI weekly summaries. Under $3/month on GitHub Actions free tier.
 ```
 
 Website field: `https://github.com/ruwgxo/living-threat-intel` (until intel.hsed.dev is live)

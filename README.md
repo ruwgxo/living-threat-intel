@@ -1,6 +1,6 @@
 # living-threat-intel
 
-**Self-updating threat intelligence platform. Zero cost. Runs on GitHub Actions.**
+**Self-updating threat intelligence platform. Runs on GitHub Actions; under $3/month (only the optional AI summaries are paid).**
 
 Aggregates CVEs, IOCs, and threat actor activity from 4+ sources daily. Generates AI-powered weekly summaries, YARA/Sigma detection rules, and a queryable YAML data store — all without a server or database.
 
@@ -189,5 +189,5 @@ Then add it to `run_all.py`'s `build_collectors()`.
 
 ## Author
 
-Raghav Dinesh · [github.com/ruwgxo](https://github.com/ruwgxo) · [hi@ruwgxo.com](mailto:hi@ruwgxo.com)  
+Raghav Dinesh · [github.com/ruwgxo](https://github.com/ruwgxo)  
 Detection & Security Platform Engineer · working in security since 2012
